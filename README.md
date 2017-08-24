@@ -1,2 +1,1 @@
-# empirical-evaluation
-SIGPLAN Empirical Evaluation Committee
+# SIGPLAN Empirical Evaluation Committee
