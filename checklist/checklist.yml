@@ -1,0 +1,164 @@
+title: "Emperical Evaluation Checklist"
+date: "January 2018"
+credits: "S M Blackburn, E D Berger, M Hauswirth and M Hicks for the ACM SIGPLAN EC"
+groups: [
+    {
+        name: "Clearly Stated Claims",
+        keyword: "Claims",
+        color: "green!10",
+        items: [
+            {
+                name: "Explicit Claims",
+                figure: "figs/explicit_claims.pdf",
+                desc: "Claims must be explicit in order for the reader to assess whether the empirical evaluation supports the claim."
+            },
+            {
+                name: "Appropriately-Scoped Claims",
+                figure: "figs/appropriately-scoped_claims.pdf",
+                desc: "The truth of claims should follow from the evidence provided. Overclaiming is often the consequence of inadequate evidence, e.g., claiming 'works for all Java', but evaluating only a static subset or claiming 'works in real world', but evaluating only in (unrealistic) simulation."
+            },
+            {
+                name: "Threats to Validity of Claims",
+                figure: "figs/threats_to_validity_of_claims.pdf",
+                desc: "A paper should state the most important threats to the validity of its claims, to place the scope of results in context. Stating no threats at all, or only tangential ones while omitting the more relevant ones, may mislead the reader to drawing too-strong conclusions.",
+            },
+       ]
+    },
+    {
+        name: "Suitable Comparison",
+        keyword: "Comparison",
+        color: "blue!10",
+        items: [
+            {
+                name: "Appropriate Baseline for Comparison",
+                figure: "figs/appropriate_baseline_for_comparison.pdf",
+                desc: "An empirical evaluation of a contribution that improves upon the state-of-the-art should evaluate that contribution against an appropriate baseline, such as the current best-of-breed competitor or a randomized baseline."
+            },
+            {
+                name: "Fair Comparison",
+                figure: "figs/fair_comparison.pdf",
+                desc: "Comparisons to a competing system should not unfairly disadvantage that system. For example, ideally, the compared systems would be compiled with the same compiler and optimization flags.",
+            },
+       ]
+    },
+    {
+        name: "Principled Benchmark Choice",
+        keyword: "Benchmark",
+        color: "red!10",
+        items: [
+            {
+                name: "Appropriate Suite",
+                figure: "figs/appropriate_suite.pdf",
+                desc: "Evaluations should be conducted using the appropriate established benchmarks where they exist. Established suites should be used in the designed-for context; for example, it would be wrong to use a single-threaded suite for studying parallel performance.."
+            },
+            {
+                name: "Non-Standard Suite(s) Justified",
+                figure: "figs/non-standard_suites_justified.pdf",
+                desc: "Sometimes an established benchmark suite does not exist. A rationale should be provided for the selection of homegrown benchmarks or subsetting established benchmark suites."
+            },
+            {
+                name: "Applications, Not (Just) Kernels",
+                figure: "figs/applications_not_just_kernels.pdf",
+                desc: "A claim that a system benefits overall applications should be tested on such applications directly, and not only on micro-kernels (which can be useful and appropriate, in a broader evaluation)",
+            },
+       ]
+    },
+    {
+        name: "Adequate Data Analysis",
+        keyword: "Data Analysis",
+        color: "orange!10",
+        items: [
+            {
+                name: "Sufficient Number of Trials",
+                figure: "figs/sufficient_number_of_trials.pdf",
+                desc: "In modern systems, which have non-deterministic performance, a small number of trials (e.g., a single time measurement) risks treating noise as signal."
+            },
+            {
+                name: "Appropriate Summary Statistics",
+                figure: "figs/appropriate_summary_statistics.pdf",
+                desc: "There are many summary statistics, and each presents an accurate view of a dataset only under appropriate circumstances. For example, the geometric mean should only be used when comparing values with different ranges, and the harmonic mean when comparing rates. When distributions have outliers, a median should be presented."
+            },
+            {
+                name: "Confidence Intervals",
+                figure: "figs/confidence_intervals.pdf",
+                desc: "Reporting just a measure of central tendency (e.g., a mean or median) fails to capture the extent of any non-determinism. A measure of variability (e.g., variance, std deviation, quantiles) and/or confidence intervals help to understand the distribution of the data.",
+            },
+       ]
+    },
+    {
+        name: "Relevant Metrics",
+        keyword: "Metrics",
+        color: "violet!10",
+        items: [
+            {
+                name: "Direct or Appropriate Proxy Metric",
+                figure: "figs/direct_or_appropriate_proxy_metric.pdf",
+                desc: "If the most relevant evaluation metric is not (or cannot be) measured directly, the proxy metric used instead must be well justified. For example, a reduction in cache misses is not an appropriate proxy for actual end-to-end performance or energy consumption."
+            },
+            {
+                name: "Measures All Important Effects",
+                figure: "figs/measure_all_important_effects.pdf",
+                desc: "The costs and benefits of a technique may be multi-faceted. All facets should be considered, both costs and benefits. For example, compiler optimizations may speed up programs but at the cost of drastically increasing compile times."
+            },
+       ]
+    },
+    {
+        name: "Appropriate and Clear Experimental Design",
+        keyword: "Experimental Design",
+        color: "brown!10",
+        items: [
+            {
+                name: "Sufficient Information to Repeat",
+                figure: "figs/sufficient_information_to_repeat.pdf",
+                desc: "Experiments should be described in sufficient detail to be repeatable. All parameters (including default values) should be included, as well as all version numbers of software, and full details of hardware platforms."
+            },
+            {
+                name: "Reasonable Platform",
+                figure: "figs/reasonable_platform.pdf",
+                desc: "The evaluation should be on a platform that can reasonably be said to match the claims. For example, a claim that relates to performance on mobile platforms should not have an evaluation performed exclusively on server."
+            },
+            {
+                name: "Explores Key Design Parameters",
+                figure: "figs/explores_key_design_parameters.pdf",
+                desc: "Key parameters should be explored over a range to evaluate sensitivity to their settings. Examples include the size of the heap when evaluating garbage collection and the size of caches when evaluating a locality optimization."
+            },
+            {
+                name: "Open Loop in Workload Generator",
+                figure: "figs/open_loop_in_workload_generator.pdf",
+                desc: "Load generators for transaction-oriented systems should not be gated by the rate at which the system responds.  Rather, the load generator should be 'open loop', generating work independent of the performance of the system under test."
+            },
+            {
+                name: "Cross-Validation Where Needed",
+                figure: "figs/cross-validation_where_needed.pdf",
+                desc: "When a system aims to be general but was developed by training on or close consideration of specific examples, it is essential that the evaluation explicitly perform cross-validation, so that the system is evaluated on data distinct from the training set."
+            },
+       ]
+    },
+    {
+        name: "Appropriate Presentation of Results",
+        keyword: "Presentation",
+        color: "pink!10",
+        items: [
+            {
+                name: "Comprehensive Summary Results",
+                figure: "figs/comprehensive_summary_results.pdf",
+                desc: "Experiments should be described in sufficient detail to be repeatable. All parameters (including default values) should be included, as well as all version numbers of software, and full details of hardware platforms"
+            },
+            {
+                name: "Axes Include Zero",
+                figure: "figs/axes_include_zero.pdf",
+                desc: "A truncated graph (with an axis not including zero) can exaggerate the importance of a difference. While `zooming' in to the interesting range of an axis can potentially aid exposition, there is a significant risk that this is misleading (especially if it is not immediately clear that the axis is truncated)."
+            },
+            {
+                name: "Ratios Plotted Correctly",
+                figure: "figs/ratios_plotted_correctly.pdf",
+                desc: "When ratios such as speedups and slowdowns are plotted, the size of the bars must be linearly/logarithmically proportional to the change.  When shown on the same linear scale, results are visually distorted by 1/r, where r is the ratio. This misleading effect can be avoided either by using a log scale or by normalizing to the lowest (highest) value."
+            },
+            {
+                name: "Appropriate Level of Precision",
+                figure: "figs/appropriate_level_of_precision.pdf",
+                desc: "The number of significant digits should reflect the precision of the experiment.   Reporting improvements of '49.9\\%' when the experimental error is +/- 1\\% is an example of mis-stated precision, misleading the reviewer's understanding of the significance of the rest."
+            },
+       ]
+    },
+]
