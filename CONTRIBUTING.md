@@ -4,7 +4,7 @@ Thank you for contributing to the checklist!   Here are some guidelines for gett
 
 **All contributions**
 
-- [ ] Check that your change is yields a sound pdf when the [genchecklist.py)](checklist/genchecklist.py) script is run.
+- [ ] Check that your change is yields a sound pdf when the [genchecklist.py](checklist/genchecklist.py) script is run.
 
 **Typos and other minor corrections**
 
@@ -19,6 +19,9 @@ Thank you for contributing to the checklist!   Here are some guidelines for gett
 
 - [ ] Ensure that you make it very clear why your checklist item should be added, including citations of concrete examples that motivate the necessity for the checklist item.
 
+**Improvements to diagrams**
+
+- [ ] Ensure that you use the same tools (presently Google Presentation), and provide a readable link to your original so that our master copy can be updated.
 
 
 
