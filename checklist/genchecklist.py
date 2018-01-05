@@ -9,9 +9,8 @@ def usage(errno):
     sys.exit(errno)
 
 
-def genlatex(title,credits,date,halfrows,halfrulecolor):
-    print("\documentclass{article}\n\\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}\n\\usepackage{multirow}\n\\usepackage[svgnames]{xcolor}\n\\usepackage{colortbl}\n\\usepackage{array}\n\\usepackage{svg}\n\\usepackage{graphicx}\n\\usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf\n\\usepackage{hhline}\n\\usepackage{amssymb}\n\setlength{\\arrayrulewidth}{.15em}\n\\begin{document}\n\pagenumbering{gobble}\n\sffamily\n\\begin{center}\\textbf{\LARGE "+title+" \large (alpha version)}\end{center}\n\scriptsize\n\\begin{centering}\\begin{tabular}{ccccccc}")
-
+def genlatex(title,version,credits,date,halfrows,halfrulecolor):
+    print("\documentclass{article}\n\\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}\n\\usepackage{multirow}\n\\usepackage[svgnames]{xcolor}\n\\usepackage{colortbl}\n\\usepackage{array}\n\\usepackage{svg}\n\\usepackage{graphicx}\n\\usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf\n\\usepackage{hhline}\n\\usepackage{amssymb}\n\setlength{\\arrayrulewidth}{.15em}\n\\begin{document}\n\pagenumbering{gobble}\n\sffamily\n\\begin{center}\\textbf{\huge "+title+"} {\\normalsize ("+version+")}\end{center}\n\scriptsize\n\\begin{centering}\\begin{tabular}{ccccccc}")
     
     rows = int((len(halfrows)+1)/2)
     for r in range(0, rows):
@@ -49,7 +48,7 @@ def gen(config):
         for g in groups:
             processgroup(g, halfrows, halfrulecolor)
     stream.close()
-    genlatex(i['title'],i['credits'],i['date'],halfrows,halfrulecolor)
+    genlatex(i['title'],i['version'],i['credits'],i['date'],halfrows,halfrulecolor)
 
 def main(argv):
     config = None

@@ -1,6 +1,7 @@
 title: "Empirical Evaluation Checklist"
 date: "January 2018"
 credits: "E. D. Berger, S. M. Blackburn, M. Hauswirth, and M. Hicks for the ACM SIGPLAN EC"
+version: "alpha version"
 groups: [
     {
         name: "Clearly Stated Claims",
