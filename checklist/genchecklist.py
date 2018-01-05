@@ -10,7 +10,7 @@ def usage(errno):
 
 
 def genlatex(title,credits,date,halfrows,halfrulecolor):
-    print("\documentclass{article}\n\\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}\n\\usepackage{multirow}\n\\usepackage[svgnames]{xcolor}\n\\usepackage{colortbl}\n\\usepackage{array}\n\\usepackage{svg}\n\\usepackage{graphicx}\n\\usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf\n\\usepackage{hhline}\n\setlength{\\arrayrulewidth}{.15em}\n\\begin{document}\n\pagenumbering{gobble}\n\sffamily\n\\begin{center}\\textbf{\LARGE "+title+" \large (alpha version)}\end{center}\n\scriptsize\n\\begin{centering}\\begin{tabular}{ccccccc}")
+    print("\documentclass{article}\n\\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}\n\\usepackage{multirow}\n\\usepackage[svgnames]{xcolor}\n\\usepackage{colortbl}\n\\usepackage{array}\n\\usepackage{svg}\n\\usepackage{graphicx}\n\\usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf\n\\usepackage{hhline}\n\\usepackage{amssymb}\n\setlength{\\arrayrulewidth}{.15em}\n\\begin{document}\n\pagenumbering{gobble}\n\sffamily\n\\begin{center}\\textbf{\LARGE "+title+" \large (alpha version)}\end{center}\n\scriptsize\n\\begin{centering}\\begin{tabular}{ccccccc}")
 
     
     rows = int((len(halfrows)+1)/2)
@@ -29,7 +29,9 @@ def processgroup(group, halfrows, halfrulecolor):
         item=group['items'][i]
         ltx="\cellcolor{"+color+"}"
         if (i == items -1):
-            ltx+= "\multirow{-"+str(items)+"}{*}{\smash{\\rotatebox[origin=tl]{90}{\\normalsize "+name+"}}}"
+ #           ltx+= "\multirow{-"+str(items)+"}{*}{\smash{\\rotatebox[origin=tl]{90}{\\normalsize "+name+"~~~{\large $\square$}}}}"
+            ltx+= "\multirow{-"+str(items)+"}{*}{\smash{\\rotatebox[origin=tl]{90}{\hspace{-2ex}\\normalsize {\setlength{\\fboxrule}{0.125pt}\\raisebox{.5ex}{\\fcolorbox{black}{white}{\\rule{0pt}{.5ex}~}}}~~~"+name+"}}}"
+#            ltx+= "\multirow{-"+str(items)+"}{*}{\smash{\\rotatebox[origin=tl]{90}{\\normalsize "+name+"}}}"
             halfrulecolor.append('white')
         else:
             halfrulecolor.append(color)
