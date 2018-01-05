@@ -143,7 +143,7 @@ groups: [
             {
                 name: "Comprehensive Summary Results",
                 figure: "figs/comprehensive_summary_results.pdf",
-                desc: "Experiments should be described in sufficient detail to be repeatable. All parameters (including default values) should be included, as well as all version numbers of software, and full details of hardware platforms"
+                desc: "Appropriate statistics should be used to characterize the full range of results, not just the most favorable values, which may be outliers.  For example, it is not appropriate to summarize speedups of 4\\%, 6\\%, 7\\%, and 49\\% as 'up to 49\\%'."
             },
             {
                 name: "Axes Include Zero",
