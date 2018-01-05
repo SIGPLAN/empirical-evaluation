@@ -9,18 +9,18 @@ def usage(errno):
     sys.exit(errno)
 
 
-def genlatex(title,credits,date,halfrows):
-    print("\documentclass{article}\n\\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}\n\\usepackage{multirow}\n\\usepackage[svgnames]{xcolor}\n\\usepackage{colortbl}\n\\usepackage{array}\n\\usepackage{svg}\n\\usepackage{graphicx}\n\\usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf\n\\begin{document}\n\pagenumbering{gobble}\n\sffamily\n\\begin{center}\\textbf{\LARGE "+title+" \large (alpha version)}\end{center}\n\scriptsize\n\\begin{centering}\\begin{tabular}{ccccccc}")
+def genlatex(title,credits,date,halfrows,halfrulecolor):
+    print("\documentclass{article}\n\\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}\n\\usepackage{multirow}\n\\usepackage[svgnames]{xcolor}\n\\usepackage{colortbl}\n\\usepackage{array}\n\\usepackage{svg}\n\\usepackage{graphicx}\n\\usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf\n\\usepackage{hhline}\n\setlength{\\arrayrulewidth}{.15em}\n\\begin{document}\n\pagenumbering{gobble}\n\sffamily\n\\begin{center}\\textbf{\LARGE "+title+" \large (alpha version)}\end{center}\n\scriptsize\n\\begin{centering}\\begin{tabular}{ccccccc}")
 
     
     rows = int((len(halfrows)+1)/2)
     for r in range(0, rows):
-        print(halfrows[r],"&&",halfrows[r+rows],"\\\\")
+        print(halfrows[r],"&&",halfrows[r+rows],"\\\\ \\hhline{>{\\arrayrulecolor{"+halfrulecolor[r]+"}}->{\\arrayrulecolor{white}}-->{\\arrayrulecolor{white}}->{\\arrayrulecolor{"+halfrulecolor[r+rows]+"}}->{\\arrayrulecolor{white}}--}")
 
     print("\end{tabular}\n\end{centering}\n\\vfill\n\hfill \scriptsize "+date+". "+credits+"\n\end{document}")
 
 
-def processgroup(group, halfrows):
+def processgroup(group, halfrows, halfrulecolor):
     color=group['color']
     keyword=group['keyword']
     name=group['name'].replace(keyword, "\\textbf{"+keyword+"}")
@@ -30,19 +30,24 @@ def processgroup(group, halfrows):
         ltx="\cellcolor{"+color+"}"
         if (i == items -1):
             ltx+= "\multirow{-"+str(items)+"}{*}{\smash{\\rotatebox[origin=tl]{90}{\\normalsize "+name+"}}}"
+            halfrulecolor.append('white')
+        else:
+            halfrulecolor.append(color)
         ltx+="& \cellcolor{"+color+"}\includegraphics[width=2.1cm]{"+item['figure']+"} &\cellcolor{"+color+"}\\begin{minipage}[b][2.1cm][t]{.3\\textwidth}\\vspace{1em}\\textbf{\small "+item['name']+"}\\\\"+item['desc']+"\end{minipage}"
         halfrows.append(ltx)
-    
+        
+   
 def gen(config):
     stream = open(config, "r")
     ol = yaml.load_all(stream)
     halfrows = []
+    halfrulecolor = []
     for i in ol:
         groups=i['groups']
         for g in groups:
-            processgroup(g, halfrows)
+            processgroup(g, halfrows, halfrulecolor)
     stream.close()
-    genlatex(i['title'],i['credits'],i['date'],halfrows)
+    genlatex(i['title'],i['credits'],i['date'],halfrows,halfrulecolor)
 
 def main(argv):
     config = None
