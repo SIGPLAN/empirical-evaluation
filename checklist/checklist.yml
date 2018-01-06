@@ -1,3 +1,4 @@
+
 title: "Empirical Evaluation Checklist"
 date: "January 2018"
 credits: "E. D. Berger, S. M. Blackburn, M. Hauswirth, and M. Hicks for the ACM SIGPLAN EC"
@@ -6,7 +7,7 @@ groups: [
     {
         name: "Clearly Stated Claims",
         keyword: "Claims",
-        color: "green!10",
+        color: "PaleGreen!50",  # Any color available via graphicx's svgnames option, integer following ! defines intensity https://en.wikipedia.org/wiki/Web_colors#X11_color_names
         items: [
             {
                 name: "Explicit Claims",
@@ -28,7 +29,7 @@ groups: [
     {
         name: "Suitable Comparison",
         keyword: "Comparison",
-        color: "blue!10",
+        color: "CornflowerBlue!30",
         items: [
             {
                 name: "Appropriate Baseline for Comparison",
@@ -45,7 +46,7 @@ groups: [
     {
         name: "Principled Benchmark Choice",
         keyword: "Benchmark",
-        color: "red!10",
+        color: "LightPink!40",
         items: [
             {
                 name: "Appropriate Suite",
@@ -67,7 +68,7 @@ groups: [
     {
         name: "Adequate Data Analysis",
         keyword: "Data Analysis",
-        color: "orange!10",
+        color: "Gold!20",
         items: [
             {
                 name: "Sufficient Number of Trials",
@@ -89,7 +90,7 @@ groups: [
     {
         name: "Relevant Metrics",
         keyword: "Metrics",
-        color: "violet!10",
+        color: "MediumPurple!30",
         items: [
             {
                 name: "Direct or Appropriate Proxy Metric",
@@ -106,7 +107,7 @@ groups: [
     {
         name: "Appropriate and Clear Experimental Design",
         keyword: "Experimental Design",
-        color: "brown!10",
+        color: "SandyBrown!20",
         items: [
             {
                 name: "Sufficient Information to Repeat",
@@ -138,7 +139,7 @@ groups: [
     {
         name: "Appropriate Presentation of Results",
         keyword: "Presentation",
-        color: "pink!10",
+        color: "Orchid!20",
         items: [
             {
                 name: "Comprehensive Summary Results",
