@@ -51,22 +51,25 @@ ltxprolog = r"""
 
 # latex row
 ltxrow =  r"""
-  $halfrowl && $halfrowr \\ \hhline{>{\arrayrulecolor{$colorl}}->{\arrayrulecolor{white}}-->{\arrayrulecolor{white}}->{\arrayrulecolor{$colorr}}->{\arrayrulecolor{white}}--}
+  $halfrowl&
+  &
+
+  $halfrowr%
+  \\ \hhline{>{\arrayrulecolor{$colorl}}->{\arrayrulecolor{white}}-->{\arrayrulecolor{white}}->{\arrayrulecolor{$colorr}}->{\arrayrulecolor{white}}--}
 """
 
 # latex halfrow
-ltxhalfrow = r"""
-& \cellcolor{$color} \includegraphics[width=1.8cm]{$figure} &\cellcolor{$color}
-\begin{minipage}[b][2.1cm][t]{.305\textwidth}\vspace{1em}
-\textbf{\small $name}\\
-$description
-\end{minipage}
-"""
+ltxhalfrow = r"""&
+  \cellcolor{$color}\includegraphics[width=1.8cm]{$figure} &
+  \cellcolor{$color}
+  \begin{minipage}[b][2.1cm][t]{.305\textwidth}\vspace{1em}
+    \textbf{\small $name}\\
+    $description
+  \end{minipage}"""
 
 # latex group name and checkbox in rotated box
-ltxgroupname = r"""
-\multirow{-$rows}{*}{\smash{\rotatebox[origin=tl]{90}{\hspace{-2ex}\normalsize {\setlength{\fboxrule}{0.125pt}\raisebox{.5ex}{\fcolorbox{black}{white}{\rule{0pt}{.5ex}~}}}~~~$name}}}
-"""
+ltxgroupname = r"""  % vertical text for group $keyword (placed in last row because subsequent \cellcolor macros will overwrite it otherwise)
+  \multirow{-$rows}{*}{\smash{\rotatebox[origin=tl]{90}{\hspace{-2ex}\normalsize {\setlength{\fboxrule}{0.125pt}\raisebox{.5ex}{\fcolorbox{black}{white}{\rule{0pt}{.5ex}~}}}~~~$name}}}"""
 
 # latex epilog
 ltxepilog = r"""
@@ -104,10 +107,10 @@ def processgroup(group, halfrows, halfrulecolor):
     items=len(group['items'])
     for i in range(0, items):
         item=group['items'][i]
-        ltx="\cellcolor{"+color+"}"
+        ltx="% checklist item '"+item['name']+"'\n  \cellcolor{"+color+"}"
         if (i == items -1):
             t=Template(ltxgroupname)
-            ltx+= t.substitute({ 'rows' : str(items), 'name' : name})
+            ltx+= t.substitute({ 'rows' : str(items), 'keyword' : keyword, 'name' : name})
             halfrulecolor.append('white')
         else:
             halfrulecolor.append(color)
