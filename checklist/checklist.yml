@@ -80,7 +80,7 @@ groups: [
                 desc: "There are many summary statistics, and each presents an accurate view of a dataset only under appropriate circumstances. For example, the geometric mean should only be used when comparing values with different ranges, and the harmonic mean when comparing rates. When distributions have outliers, a median should be presented."
             },
             {
-                name: "Confidence Intervals",
+                name: "Report Data Distribution",
                 figure: "figs/confidence_intervals.pdf",
                 desc: "Reporting just a measure of central tendency (e.g., a mean or median) fails to capture the extent of any non-determinism. A measure of variability (e.g., variance, std deviation, quantiles) and/or confidence intervals help to understand the distribution of the data.",
             },
