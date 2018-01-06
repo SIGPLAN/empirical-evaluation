@@ -36,6 +36,15 @@ ltxprolog = r"""
 \usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf
 \setlength{\arrayrulewidth}{.15em}
 
+\newlength{\cellpad}\setlength{\cellpad}{2ex}
+\newlength{\rowheight}\setlength{\rowheight}{2.1cm}
+\newlength{\figwidth}\setlength{\figwidth}{1.8cm}
+\newlength{\descwidth}\setlength{\descwidth}{.31\textwidth}
+
+\newcommand{\checkbox}{{\hspace*{-.5ex}\setlength{\fboxrule}{0.125pt}\raisebox{-.5ex}{\fcolorbox{black}{white}{\rule{0pt}{2ex}\hspace{2ex}}}}}
+\newlength{\vcbsize}
+\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)-(\cellpad*2)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-1ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2}}\hspace*{1ex}\checkbox }}}}
+
 \begin{document}
 \pagenumbering{gobble}
 \sffamily
@@ -60,16 +69,15 @@ ltxrow =  r"""
 
 # latex halfrow
 ltxhalfrow = r"""&
-  \cellcolor{$color}\includegraphics[width=1.8cm]{$figure} &
+  \cellcolor{$color}\includegraphics[width=\figwidth]{$figure} &
   \cellcolor{$color}
-  \begin{minipage}[b][2.1cm][t]{.305\textwidth}\vspace{1em}
+  \begin{minipage}[b][\rowheight][t]{\descwidth}\vspace{1em}
     \textbf{\small $name}\\
     $description
   \end{minipage}"""
 
 # latex group name and checkbox in rotated box
-ltxgroupname = r"""  % vertical text for group $keyword (placed in last row because subsequent \cellcolor macros will overwrite it otherwise)
-  \multirow{-$rows}{*}{\smash{\rotatebox[origin=tl]{90}{\hspace{-2ex}\normalsize {\setlength{\fboxrule}{0.125pt}\raisebox{.5ex}{\fcolorbox{black}{white}{\rule{0pt}{.5ex}~}}}~~~$name}}}"""
+ltxgroupname = r"""\verticalwithcheckbox{$rows}{$name}"""
 
 # latex epilog
 ltxepilog = r"""
