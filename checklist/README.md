@@ -12,4 +12,4 @@ The checklist is maintained as a plain-text [yaml](http://yaml.org) file [here](
 
 ### Generating a pdf
 
-A pdf can be generated from the yaml using [this script](genchecklist.py).
+A pdf can be generated from the yaml using [this script](genchecklist.py).   The script requires Python3 and the PyYAML package (`pip3 install PyYAML`).
