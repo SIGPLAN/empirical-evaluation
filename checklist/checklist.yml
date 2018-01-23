@@ -55,7 +55,7 @@ groups: [
             {
                 name: "Appropriate Suite",
                 figure: "figs/appropriate_suite.pdf",
-                desc: "Evaluations should be conducted using the appropriate established benchmarks where they exist. Established suites should be used in the designed-for context; for example, it would be wrong to use a single-threaded suite for studying parallel performance..",
+                desc: "Evaluations should be conducted using the appropriate established benchmarks where they exist. Established suites should be used in the designed-for context; for example, it would be wrong to use a single-threaded suite for studying parallel performance.",
                 notes: "This includes misuse of incorrect established suite eg use of SPEC CINT2006 when considering parallel workloads",
             },
             {
