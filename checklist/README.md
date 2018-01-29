@@ -1,6 +1,6 @@
-## Emperical Evaluation Checklist
+## Empirical Evaluation Checklist
 
-An up-to-date version of the SIGPLAN emperical evaluation checklist should always be available [here](checklist.pdf).
+An up-to-date version of the SIGPLAN empirical evaluation checklist should always be available [here](checklist.pdf).
 
 ### Feedback
 
