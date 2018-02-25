@@ -33,6 +33,10 @@ ltxprolog = r"""
 \usepackage{svg}
 \usepackage{graphicx}
 \usepackage{hhline}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata}
 \usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf
 \setlength{\arrayrulewidth}{.15em}
 
@@ -84,14 +88,14 @@ ltxepilog = r"""
   \end{tabular}
 \end{centering}
 \vfill
-\hfill \scriptsize $date. $credits
+\scriptsize \hspace*{-4ex}\url{$url} \hfill $date. $credits
 \end{document}
 """
 
 #
 # Generate the latex for the whole document
 #
-def genlatex(ltxfile,title,version,credits,date,halfrows,halfrulecolor):
+def genlatex(ltxfile,title,version,url,credits,date,halfrows,halfrulecolor):
     with open(ltxfile,'w') as f:
         t=Template(ltxprolog)
         f.write(t.substitute({ 'title': title, 'version': version}))
@@ -102,7 +106,7 @@ def genlatex(ltxfile,title,version,credits,date,halfrows,halfrulecolor):
             f.write(t.substitute({ 'halfrowl' : halfrows[r], 'halfrowr' : halfrows[r+rows], 'colorl' : halfrulecolor[r], 'colorr' : halfrulecolor[r+rows] }))
             
         t=Template(ltxepilog)
-        f.write(t.substitute({ 'date': date, 'credits': credits}))
+        f.write(t.substitute({ 'url': url, 'date': date, 'credits': credits}))
     f.closed
     
 #
@@ -140,7 +144,7 @@ def parseandgen(config, ltxfile):
         for g in groups:
             processgroup(g, halfrows, halfrulecolor)
     stream.close()
-    genlatex(ltxfile,i['title'],i['version'],i['credits'],i['date'],halfrows,halfrulecolor)
+    genlatex(ltxfile,i['title'],i['version'],i['url'],i['credits'],i['date'],halfrows,halfrulecolor)
 
 
 def main(argv):
