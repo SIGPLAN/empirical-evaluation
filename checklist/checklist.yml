@@ -19,8 +19,8 @@ groups: [
             {
                 name: "Appropriately-Scoped Claims",
                 figure: "figs/appropriately-scoped_claims.pdf",
-                desc: "The truth of claims should follow from the evidence provided. Overclaiming is often the consequence of inadequate evidence, e.g., claiming 'works for all Java', but evaluating only a static subset or claiming 'works in real world', but evaluating only in (unrealistic) simulation.",
-                notes: "This includes implied generality (implied: 'works for all Java', but actually only static subset; implied: 'works in real world', but actually only works in simulation; implied: 'automatic process', but in fact required non-trivial human supervison; implied: 'only improves the systems' performance', but actually the approach requires breaking some of the system's expected behavior) Also: Demonstrate on X, but unclear if relevant to target Y made in the claim"
+                desc: "The truth of claims should follow from the evidence provided. Overclaiming is often the consequence of inadequate evidence, e.g., claiming 'works for all Java', but evaluating only a static subset or claiming 'works on real hardware', but evaluating only in (unrealistic) simulation.",
+                notes: "This includes implied generality (implied: 'works for all Java', but actually only static subset; implied: 'works in real hardware', but actually only works in simulation; implied: 'automatic process', but in fact required non-trivial human supervison; implied: 'only improves the systems' performance', but actually the approach requires breaking some of the system's expected behavior) Also: Demonstrate on X, but unclear if relevant to target Y made in the claim"
             },
             {
                 name: "Threats to Validity of Claims",
