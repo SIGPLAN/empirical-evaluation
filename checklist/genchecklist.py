@@ -116,21 +116,28 @@ def processgroup(group, halfrows, halfrulecolor):
     color=group['color']
     keyword=group['keyword']
     name=group['name'].replace(keyword, "\\textbf{"+keyword+"}")
-    items=len(group['items'])
-    for i in range(0, items):
-        item=group['items'][i]
-        ltx="% checklist item '"+item['name']+"'\n  \cellcolor{"+color+"}"
-        if (i == items -1):
-            t=Template(ltxgroupname)
-            ltx+= t.substitute({ 'rows' : str(items), 'keyword' : keyword, 'name' : name})
-            halfrulecolor.append('white')
-        else:
-            halfrulecolor.append(color)
+    # filter out those items that are to be included in the printed checklist
+    ltxitems = []
+    for i in range(0, len(group['items'])):
+        if group['items'][i]['include']:
+            ltxitems.append(group['items'][i])
+    count=len(ltxitems)
+    for i in range(0, count):
+        item=ltxitems[i]
+        print ('include ',item['name'],' -> ',item['include'])
+        if item['include']:
+            ltx="% checklist item '"+item['name']+"'\n  \cellcolor{"+color+"}"
+            if (i == count - 1):
+                t=Template(ltxgroupname)
+                ltx+= t.substitute({ 'rows' : str(count), 'keyword' : keyword, 'name' : name})
+                halfrulecolor.append('white')
+            else:
+                halfrulecolor.append(color)
 
-        t=Template(ltxhalfrow)
-        ltx+=t.substitute({ 'color': color, 'figure': item['figure'], 'name': item['name'], 'description': item['desc'] })
-        halfrows.append(ltx)
-        
+            t=Template(ltxhalfrow)
+            ltx+=t.substitute({ 'color': color, 'figure': item['figure'], 'name': item['name'], 'description': item['desc'] })
+            halfrows.append(ltx)
+
 #
 # parse the yaml and generate the latex
 #
