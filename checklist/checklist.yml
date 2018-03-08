@@ -22,7 +22,7 @@ groups: [
                 include: yes,
                 figure: "figs/appropriately-scoped_claims.pdf",
                 desc: "The truth of claims should follow from the evidence provided. Overclaiming is often the consequence of inadequate evidence, e.g., claiming 'works for all Java', but evaluating only a static subset or claiming 'works on real hardware', but evaluating only in (unrealistic) simulation.",
-                notes: "This includes implied generality (implied: 'works for all Java', but actually only static subset; implied: 'works on real hardware', but actually only works in simulation; implied: 'automatic process', but in fact required non-trivial human supervison; implied: 'only improves the systems' performance', but actually the approach requires breaking some of the system's expected behavior) Also: Demonstrate on X, but unclear if relevant to target Y made in the claim"
+                notes: "This includes implied generality (implied: 'works for all Java', but actually only static subset; implied: 'works on real hardware', but actually only works in simulation; implied: 'automatic process', but in fact required non-trivial human supervision; implied: 'only improves the systems' performance', but actually the approach requires breaking some of the system's expected behavior) Also: Demonstrate on X, but unclear if relevant to target Y made in the claim"
             },
             {
                 name: "Threats to Validity of Claims",
@@ -188,7 +188,7 @@ groups: [
                 include: yes,
                 figure: "figs/ratios_plotted_correctly.pdf",
                 desc: "When ratios such as speedups and slowdowns are plotted, the size of the bars must be linearly/logarithmically proportional to the change.  When shown on the same linear scale, results are visually distorted by 1/r, where r is the ratio. This misleading effect can be avoided either by using a log scale or by normalizing to the lowest (highest) value.",
-                notes: "For example, if times for a and b are 4 sec and 8 sec respectively for benchmark x and 6 sec and 3 sec for bechmark y, this could be shown as a/b (0.5, 2.0) or b/a (2.0, 0.5), where 1.0 represents parity. Although the results (0.5 & 2.0) are reciprocals, their distance from 1.0 on a linear scale is different by a factor of two (0.5 & 1.0), overstating the speedup. Therefore showing ratios (or percentages) greater than 1.0 (100%) and less than 1.0 (100%) on the same linear scale is visually misleading."
+                notes: "For example, if times for a and b are 4 sec and 8 sec respectively for benchmark x and 6 sec and 3 sec for benchmark y, this could be shown as a/b (0.5, 2.0) or b/a (2.0, 0.5), where 1.0 represents parity. Although the results (0.5 & 2.0) are reciprocals, their distance from 1.0 on a linear scale is different by a factor of two (0.5 & 1.0), overstating the speedup. Therefore showing ratios (or percentages) greater than 1.0 (100%) and less than 1.0 (100%) on the same linear scale is visually misleading."
             },
             {
                 name: "Appropriate Level of Precision",
