@@ -1,8 +1,7 @@
-
-title: "Empirical Evaluation Checklist"
-date: "January 2018"
+title: "SIGPLAN Empirical Evaluation Checklist"
+date: "March 2018"
 credits: "E. D. Berger, S. M. Blackburn, M. Hauswirth, and M. Hicks for the ACM SIGPLAN EC"
-version: "beta"
+version: ""
 url: "http://www.sigplan.org/Resources/EmpiricalEvaluation/"
 rationale: "rationale goes here"
 groups: [
@@ -15,7 +14,7 @@ groups: [
                 name: "Explicit Claims",
                 include: yes,
                 figure: "figs/explicit_claims.pdf",
-                desc: "Claims must be explicit in order for the reader to assess whether the empirical evaluation supports the claim."
+                desc: "Claims must be explicit in order for the reader to assess whether the empirical evaluation supports them.  Claims should aim to state not just what is achieved but how."
             },
             {
                 name: "Appropriately-Scoped Claims",
@@ -90,7 +89,7 @@ groups: [
                 name: "Sufficient Number of Trials",
                 include: yes,
                 figure: "figs/sufficient_number_of_trials.pdf",
-                desc: "In modern systems, which have non-deterministic performance, a small number of trials (e.g., a single time measurement) risks treating noise as signal.",
+                desc: "In modern systems, which have non-deterministic performance, a small number of trials (e.g., a single time measurement) risks treating noise as signal. Similarly, more trials may be needed to get the system into an intended state (e.g., into a steady state that avoids warm-up effects).",
                 notes: ", and to assess the statistical significance of the difference between multiple means."
             },
             {
@@ -123,7 +122,7 @@ groups: [
                 name: "Measures All Important Effects",
                 include: yes,
                 figure: "figs/measure_all_important_effects.pdf",
-                desc: "The costs and benefits of a technique may be multi-faceted. All facets should be considered, both costs and benefits. For example, compiler optimizations may speed up programs but at the cost of drastically increasing compile times."
+                desc: "The costs and benefits of a technique may be multi-faceted. All facets should be considered, both costs and benefits, and ideally evaluated. For example, compiler optimizations may speed up programs at the cost of drastically increasing compile times."
             },
        ]
     },
@@ -148,13 +147,13 @@ groups: [
                 name: "Explores Key Design Parameters",
                 include: yes,
                 figure: "figs/explores_key_design_parameters.pdf",
-                desc: "Key parameters should be explored over a range to evaluate sensitivity to their settings. Examples include the size of the heap when evaluating garbage collection and the size of caches when evaluating a locality optimization."
+                desc: "Key parameters should be explored over a range to evaluate sensitivity to their settings. Examples include the size of the heap when evaluating garbage collection and the size of caches when evaluating a locality optimization. All expected system configurations (e.g., from warmup to steady state) should be considered."
             },
             {
                 name: "Open Loop in Workload Generator",
                 include: yes,
                 figure: "figs/open_loop_in_workload_generator.pdf",
-                desc: "Load generators for transaction-oriented systems should not be gated by the rate at which the system responds.  Rather, the load generator should be 'open loop', generating work independent of the performance of the system under test.",
+                desc: "Load generators for typical transaction-oriented systems should not be gated by the rate at which the system responds.  Rather, the load generator should be 'open loop', generating work independent of the performance of the system under test.   See [Scrhoeder et al, 2006]",
                 notes: "Common error in networking and search, called out in a seminal paper by Scrhoeder et al in 2006 (https://dl.acm.org/citation.cfm?id=1267698)."
             },
             {
@@ -181,13 +180,13 @@ groups: [
                 name: "Axes Include Zero",
                 include: yes,
                 figure: "figs/axes_include_zero.pdf",
-                desc: "A truncated graph (with an axis not including zero) can exaggerate the importance of a difference. While `zooming' in to the interesting range of an axis can potentially aid exposition, there is a significant risk that this is misleading (especially if it is not immediately clear that the axis is truncated)."
+                desc: "A truncated graph (with an axis not including zero) can exaggerate the importance of a difference. While `zooming' in to the interesting range of an axis can sometimes aid exposition, there is a significant risk that this is misleading (especially if it is not immediately clear that the axis is truncated)."
             },
             {
                 name: "Ratios Plotted Correctly",
                 include: yes,
                 figure: "figs/ratios_plotted_correctly.pdf",
-                desc: "When ratios such as speedups and slowdowns are plotted, the size of the bars must be linearly/logarithmically proportional to the change.  When shown on the same linear scale, results are visually distorted by 1/r, where r is the ratio. This misleading effect can be avoided either by using a log scale or by normalizing to the lowest (highest) value.",
+                desc: "When ratios (e.g. speedups) are plotted on one graph, the size of the bars must be linearly/logarithmically proportional to the change.  For example, 2.0 and 0.5 are reciprocals, but their linear distance from 1.0 does not reflect that. This misleading effect can be avoided either by using a log scale or by normalizing to the lowest (highest) value.",
                 notes: "For example, if times for a and b are 4 sec and 8 sec respectively for benchmark x and 6 sec and 3 sec for benchmark y, this could be shown as a/b (0.5, 2.0) or b/a (2.0, 0.5), where 1.0 represents parity. Although the results (0.5 & 2.0) are reciprocals, their distance from 1.0 on a linear scale is different by a factor of two (0.5 & 1.0), overstating the speedup. Therefore showing ratios (or percentages) greater than 1.0 (100%) and less than 1.0 (100%) on the same linear scale is visually misleading."
             },
             {
