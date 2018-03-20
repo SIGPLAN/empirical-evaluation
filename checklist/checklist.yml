@@ -8,7 +8,7 @@ groups: [
     {
         name: "Clearly Stated Claims",
         keyword: "Claims",
-        color: "PaleGreen!50",  # Any color available via graphicx's svgnames option, integer following ! defines intensity https://en.wikipedia.org/wiki/Web_colors#X11_color_names
+        color: "Grey!15",  # Any color available via graphicx's svgnames option, integer following ! defines intensity https://en.wikipedia.org/wiki/Web_colors#X11_color_names
         items: [
             {
                 name: "Explicit Claims",
@@ -34,7 +34,7 @@ groups: [
     {
         name: "Suitable Comparison",
         keyword: "Comparison",
-        color: "CornflowerBlue!30",
+        color: "White",
         items: [
             {
                 name: "Appropriate Baseline for Comparison",
@@ -55,7 +55,7 @@ groups: [
     {
         name: "Principled Benchmark Choice",
         keyword: "Benchmark",
-        color: "LightPink!40",
+        color: "Grey!15",
         items: [
             {
                 name: "Appropriate Suite",
@@ -83,7 +83,7 @@ groups: [
     {
         name: "Adequate Data Analysis",
         keyword: "Data Analysis",
-        color: "Gold!20",
+        color: "White",
         items: [
             {
                 name: "Sufficient Number of Trials",
@@ -110,7 +110,7 @@ groups: [
     {
         name: "Relevant Metrics",
         keyword: "Metrics",
-        color: "MediumPurple!30",
+        color: "Grey!15",
         items: [
             {
                 name: "Direct or Appropriate Proxy Metric",
@@ -129,7 +129,7 @@ groups: [
     {
         name: "Appropriate and Clear Experimental Design",
         keyword: "Experimental Design",
-        color: "SandyBrown!20",
+        color: "White",
         items: [
             {
                 name: "Sufficient Information to Repeat",
@@ -168,7 +168,7 @@ groups: [
     {
         name: "Appropriate Presentation of Results",
         keyword: "Presentation",
-        color: "Orchid!20",
+        color: "Grey!15",
         items: [
             {
                 name: "Comprehensive Summary Results",
