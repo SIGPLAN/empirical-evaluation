@@ -54,7 +54,7 @@ ltxprolog = r"""
 \sffamily
 
 \begin{center}
-  \textbf{\huge $title {\normalsize ($version)}}
+  \textbf{\huge $title {\normalsize $version}}
 \end{center}
 
 \scriptsize
@@ -98,6 +98,8 @@ ltxepilog = r"""
 def genlatex(ltxfile,title,version,url,credits,date,halfrows,halfrulecolor):
     with open(ltxfile,'w') as f:
         t=Template(ltxprolog)
+        if version:
+            version = "("+version+")"
         f.write(t.substitute({ 'title': title, 'version': version}))
         
         rows = int((len(halfrows)+1)/2)
