@@ -59,14 +59,14 @@ ltxprolog = r"""
 
 \scriptsize
 \begin{centering}
-  \begin{tabular}{ccccccc}
+  \arrayrulecolor{white}
+  \begin{tabular}{c|cccc|cc}
 """
 
 # latex row
 ltxrow =  r"""
   $halfrowl&
   &
-
   $halfrowr%
   \\ \hhline{>{\arrayrulecolor{$colorl}}->{\arrayrulecolor{white}}-->{\arrayrulecolor{white}}->{\arrayrulecolor{$colorr}}->{\arrayrulecolor{white}}--}
 """
