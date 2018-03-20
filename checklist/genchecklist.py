@@ -126,7 +126,6 @@ def processgroup(group, halfrows, halfrulecolor):
     count=len(ltxitems)
     for i in range(0, count):
         item=ltxitems[i]
-        print ('include ',item['name'],' -> ',item['include'])
         if item['include']:
             ltx="% checklist item '"+item['name']+"'\n  \cellcolor{"+color+"}"
             if (i == count - 1):
