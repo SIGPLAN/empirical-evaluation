@@ -3,6 +3,7 @@ date: "June 2018"
 credits: "E. D. Berger, S. M. Blackburn, M. Hauswirth, and M. Hicks for the ACM SIGPLAN EC"
 version: ""
 url: "http://www.sigplan.org/Resources/EmpiricalEvaluation/"
+pdfurl: "https://github.com/SIGPLAN/empirical-evaluation/raw/master/checklist/checklist.pdf"
 rationale: "rationale goes here"
 groups: [
     {

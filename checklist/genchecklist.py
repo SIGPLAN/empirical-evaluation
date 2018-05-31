@@ -93,7 +93,7 @@ ltxepilog = r"""
   \end{tabular}
 \end{centering}
 \vspace*{-4ex}
-\scriptsize \href{$url}{\hspace*{-0ex}\raisebox{-.25cm}{\includegraphics[width=.75cm]{pdf.png}}}~PDF: \url{$url} \hfill $date. $credits
+\scriptsize \href{$pdfurl}{\hspace*{-0ex}\raisebox{-.25cm}{\includegraphics[width=.75cm]{pdf.png}}}~PDF: \url{$url} \hfill $date. $credits
 \twocolumn
 \begin{center}
   \textbf{\color{gray}\huge FAQ}
@@ -145,7 +145,7 @@ Our manifesto is: Usage should determine content. We welcome feedback from users
 #
 # Generate the latex for the whole document
 #
-def genlatex(ltxfile,title,version,url,credits,date,halfrows,halfrulecolor):
+def genlatex(ltxfile,title,version,url,pdfurl,credits,date,halfrows,halfrulecolor):
     with open(ltxfile,'w') as f:
         t=Template(ltxprolog)
         if version:
@@ -158,7 +158,7 @@ def genlatex(ltxfile,title,version,url,credits,date,halfrows,halfrulecolor):
             f.write(t.substitute({ 'halfrowl' : halfrows[r], 'halfrowr' : halfrows[r+rows], 'colorl' : halfrulecolor[r], 'colorr' : halfrulecolor[r+rows] }))
             
         t=Template(ltxepilog)
-        f.write(t.substitute({ 'url': url, 'date': date, 'credits': credits}))
+        f.write(t.substitute({ 'url': url, 'pdfurl': pdfurl, 'date': date, 'credits': credits}))
     f.closed
     
 #
@@ -202,7 +202,7 @@ def parseandgen(config, ltxfile):
         for g in groups:
             processgroup(g, halfrows, halfrulecolor)
     stream.close()
-    genlatex(ltxfile,i['title'],i['version'],i['url'],i['credits'],i['date'],halfrows,halfrulecolor)
+    genlatex(ltxfile,i['title'],i['version'],i['url'],i['pdfurl'],i['credits'],i['date'],halfrows,halfrulecolor)
 
 
 def main(argv):
