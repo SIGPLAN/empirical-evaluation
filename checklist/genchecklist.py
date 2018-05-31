@@ -87,8 +87,8 @@ ltxgroupname = r"""\verticalwithcheckbox{$rows}{$name}"""
 ltxepilog = r"""
   \end{tabular}
 \end{centering}
-\vfill
-\scriptsize \hspace*{-4ex}\url{$url} \hfill $date. $credits
+\vspace*{-4ex}
+\scriptsize \hspace*{-0ex}\raisebox{-.25cm}{\includegraphics[width=.75cm]{pdf.png}}~PDF: \url{$url} \hfill $date. $credits
 \end{document}
 """
 
