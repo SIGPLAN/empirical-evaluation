@@ -38,16 +38,16 @@ ltxprolog = r"""
 \usepackage[T1]{fontenc}
 \usepackage{inconsolata}
 \usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf
-\setlength{\arrayrulewidth}{.15em}
+\setlength{\arrayrulewidth}{.05em}
 
-\newlength{\cellpad}\setlength{\cellpad}{2ex}
+\newlength{\cellpad}\setlength{\cellpad}{2.1ex}
 \newlength{\rowheight}\setlength{\rowheight}{2.1cm}
-\newlength{\figwidth}\setlength{\figwidth}{1.8cm}
-\newlength{\descwidth}\setlength{\descwidth}{.31\textwidth}
+\newlength{\figwidth}\setlength{\figwidth}{1.65cm}
+\newlength{\descwidth}\setlength{\descwidth}{.30\textwidth}
 
-\newcommand{\checkbox}{{\hspace*{-.5ex}\setlength{\fboxrule}{0.125pt}\raisebox{-.5ex}{\fcolorbox{black}{white}{\rule{0pt}{2ex}\hspace{2ex}}}}}
+\newcommand{\checkbox}{{\hspace*{-1ex}\setlength{\fboxrule}{0.125pt}\raisebox{1.1ex}{\fcolorbox{black}{white}{\rule{0pt}{2ex}\hspace{2ex}}}}}
 \newlength{\vcbsize}
-\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)-(\cellpad*2)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-1ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2}}\hspace*{1ex}\checkbox }}}}
+\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)-(\cellpad*2)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-1ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2\\{\raisebox{-0ex}{\scriptsize Example Problems}}}}\hspace*{1ex}\checkbox }}}}
 
 \begin{document}
 \pagenumbering{gobble}
