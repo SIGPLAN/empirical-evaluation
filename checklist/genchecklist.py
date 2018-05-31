@@ -45,9 +45,9 @@ ltxprolog = r"""
 \newlength{\figwidth}\setlength{\figwidth}{1.65cm}
 \newlength{\descwidth}\setlength{\descwidth}{.30\textwidth}
 
-\newcommand{\checkbox}{{\hspace*{-1ex}\setlength{\fboxrule}{0.125pt}\raisebox{1.1ex}{\fcolorbox{black}{white}{\rule{0pt}{2ex}\hspace{2ex}}}}}
+\newcommand{\checkbox}{{\hspace*{.3ex}\setlength{\fboxrule}{0.125pt}\raisebox{-.6ex}{\fcolorbox{black}{white}{\rule{0pt}{2ex}\hspace{2ex}}}}}
 \newlength{\vcbsize}
-\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)-(\cellpad*2)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-1ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2\\{\raisebox{-0ex}{\scriptsize Example Problems}}}}\hspace*{1ex}\checkbox }}}}
+\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-1ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2\hspace*{1ex}\checkbox \\{\raisebox{-0ex}{\scriptsize Example Problems}}}}}}}}
 
 \begin{document}
 \pagenumbering{gobble}
