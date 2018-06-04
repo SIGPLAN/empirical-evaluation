@@ -82,7 +82,8 @@ ltxhalfrow = r"""&
   \cellcolor{$color}\includegraphics[width=\figwidth]{$figure} &
   \cellcolor{$color}
   \begin{minipage}[b][\rowheight][t]{\descwidth}\vspace{1em}
-    \textbf{\small $name}\\
+    \color{darkgray}
+    \textbf{$name}\\
     $description
   \end{minipage}"""
 
