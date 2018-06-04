@@ -95,7 +95,7 @@ ltxepilog = r"""
   \end{tabular}
 \end{centering}
 \vspace*{-4ex}
-\scriptsize \href{$pdfurl}{\hspace*{-0ex}\raisebox{-.25cm}{\includegraphics[width=.75cm]{pdf.png}}}~PDF: \url{$url} \hfill $date. $credits
+\scriptsize \href{$pdfurl}{\hspace*{-0ex}\raisebox{-.25cm}{\includegraphics[width=.75cm]{pdf.png}}}~PDF: \href{$url}{\color{black}\texttt{$url}} \hfill $date. $credits
 \twocolumn
 \begin{center}
   \textbf{\color{gray}\huge FAQ}
