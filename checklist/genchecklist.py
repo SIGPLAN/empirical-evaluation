@@ -59,7 +59,8 @@ ltxprolog = r"""
 \sffamily
 
 \begin{center}
-  \textbf{\huge $title {\normalsize $version}}
+  \textbf{\huge $title {\normalsize $version}}\\
+  \textit{\color{gray} \scriptsize $subtitle}
 \end{center}
 
 \scriptsize
@@ -145,12 +146,12 @@ Our manifesto is: Usage should determine content. We welcome feedback from users
 #
 # Generate the latex for the whole document
 #
-def genlatex(ltxfile,title,version,url,pdfurl,credits,date,halfrows,halfrulecolor):
+def genlatex(ltxfile,title,subtitle,version,url,pdfurl,credits,date,halfrows,halfrulecolor):
     with open(ltxfile,'w') as f:
         t=Template(ltxprolog)
         if version:
             version = "("+version+")"
-        f.write(t.substitute({ 'title': title, 'version': version}))
+        f.write(t.substitute({ 'title': title, 'version': version, 'subtitle': subtitle}))
         
         rows = int((len(halfrows)+1)/2)
         t=Template(ltxrow)
@@ -202,7 +203,7 @@ def parseandgen(config, ltxfile):
         for g in groups:
             processgroup(g, halfrows, halfrulecolor)
     stream.close()
-    genlatex(ltxfile,i['title'],i['version'],i['url'],i['pdfurl'],i['credits'],i['date'],halfrows,halfrulecolor)
+    genlatex(ltxfile,i['title'],i['subtitle'],i['version'],i['url'],i['pdfurl'],i['credits'],i['date'],halfrows,halfrulecolor)
 
 
 def main(argv):
