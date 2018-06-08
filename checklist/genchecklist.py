@@ -40,7 +40,7 @@ ltxprolog = r"""
 \usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf
 \setlength{\arrayrulewidth}{.05em}
 \usepackage{titlesec}
-\titleformat*{\paragraph}{\normalsize\color{gray}\sffamily\bfseries}
+\titleformat*{\paragraph}{\small\color{gray}\sffamily\bfseries}
 \usepackage{flushend}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=cyan}
@@ -98,9 +98,36 @@ ltxepilog = r"""
 \scriptsize \href{$pdfurl}{\hspace*{-0ex}\raisebox{-.25cm}{\includegraphics[width=.75cm]{pdf.png}}}~PDF: \href{$url}{\color{black}\texttt{$url}} \hfill $date. $credits
 \twocolumn
 \begin{center}
-  \textbf{\color{gray}\huge FAQ}
+  \textbf{\color{gray}\huge Notes}\vspace*{-2ex}
 \end{center}
-\color{gray}\small
+\color{gray}\footnotesize
+\paragraph{Appropriately-Scoped Claims}
+This includes \emph{implied} generality --- implied: \emph{`works for all Java'}, but actually only on a static subset; implied: \emph{`works on real hardware'}, but actually only works in simulation; implied: \emph{`automatic process'}, but in fact required non-trivial human supervision; implied: \emph{`only improves the systems' performance'}, but actually the approach requires breaking some of the system's expected behavior.
+
+\paragraph{Appropriate Baseline for Comparison}
+An evaluation of an idea that improves upon the state-of-the-art should evaluate that idea against a baseline. This baseline could be a best-of-breed competitor, but should not be a straw man, e.g., something that once was, but is no longer, the state-of-the-art. The baseline could also be an unsophisticated approach to the same problem, e.g., a fancy testing tool is usefully compared against one that is purely random, in order to see whether it does better.
+
+\paragraph{Fair Comparison}
+For example, the authors were unable to build the state-of-the-art baseline at the -O3 optimization level and used -O0 instead, while using -O3 for their system.
+
+\paragraph{Appropriate Suite}
+This includes misuse of incorrect established suite e.g. use of SPEC CINT2006 when considering parallel workloads.
+
+\paragraph{Non-Standard Suite(s) Justified}
+Note that 'benchmark' here includes what is measured and the parameters of that measurement. One example of an oft-unappreciated benchmark parameter is timeout choice.
+
+\paragraph{Appropriate Summary Statistics}
+There are many excellent resources available, including: \href{https://onlinelibrary.wiley.com/doi/book/10.1002/9781118360125}{\emph{Common errors in statistics (and how to avoid them).}} (Phillip I Good and James W Hardin, 2012), \href{https://www.pearson.com/us/higher-education/program/Vickers-What-is-a-p-value-anyway-34-Stories-to-Help-You-Actually-Understand-Statistics/PGM105328.html}{\emph{What is a P-value anyway?: 34 stories to help you actually understand statistics.}} (Andrew Vickers, 2010), and \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1751-5823.2009.00085_24.x}{\emph{Statistical misconceptions.}} (Schuyler W Huck, 2009).
+
+\paragraph{Ratios Plotted Correctly}
+For example, if times for a and b are 4 sec and 8 sec respectively for benchmark x and 6 sec and 3 sec for benchmark y, this could be shown as a/b (0.5, 2.0) or b/a (2.0, 0.5), where 1.0 represents parity. Although the results (0.5 \& 2.0) are reciprocals, their distance from 1.0 on a linear scale is different by a factor of two (0.5 \& 1.0), overstating the speedup. This is why showing ratios (or percentages) greater than 1.0 (100\%) and less than 1.0 (100\%) on the same linear scale is visually misleading.
+\vspace{4ex}
+
+
+\begin{center}
+  \textbf{\color{gray}\huge FAQ}\vspace*{-2ex}
+\end{center}
+\color{gray}\footnotesize
 \paragraph{Why a checklist?}
 Our goal is to help ensure that current, accepted best practices are followed. Per the \href{https://en.wikipedia.org/wiki/The_Checklist_Manifesto}{Checklist Manifesto}, checklists help to do exactly this. Our interest is the good practices for carrying out empirical evaluations as part of PL research. While some practices are clearly wrong, many require careful consideration: Not every case under every category in the checklist applies to every evaluation -- expert judgment is required. The checklist is meant to assist expert judgment, not substitute for it. \href{http://www.everup.com/2016/01/25/about-the-checklist-manifesto-atul-gawande-takeaways/}{`Failure isn't due to ignorance. According to best-selling author Atul Gawande, it's because we haven't properly applied what we already know.'} We've kept the list to a single page to make it easier to use and refer back to.
 

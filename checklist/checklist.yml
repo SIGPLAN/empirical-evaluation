@@ -189,7 +189,7 @@ groups: [
                 include: yes,
                 figure: "figs/ratios_plotted_correctly.pdf",
                 desc: "When ratios (e.g. speedups) are plotted on one graph, the size of the bars must be linearly/logarithmically proportional to the change.  For example, 2.0 and 0.5 are reciprocals, but their linear distance from 1.0 does not reflect that. This misleading effect can be avoided either by using a log scale or by normalizing to the lowest (highest) value.",
-                notes: "For example, if times for a and b are 4 sec and 8 sec respectively for benchmark x and 6 sec and 3 sec for benchmark y, this could be shown as a/b (0.5, 2.0) or b/a (2.0, 0.5), where 1.0 represents parity. Although the results (0.5 & 2.0) are reciprocals, their distance from 1.0 on a linear scale is different by a factor of two (0.5 & 1.0), overstating the speedup. Therefore showing ratios (or percentages) greater than 1.0 (100%) and less than 1.0 (100%) on the same linear scale is visually misleading."
+                notes: "For example, if times for a and b are 4 sec and 8 sec respectively for benchmark x and 6 sec and 3 sec for benchmark y, this could be shown as a/b (0.5, 2.0) or b/a (2.0, 0.5), where 1.0 represents parity. Although the results (0.5 & 2.0) are reciprocals, their distance from 1.0 on a linear scale is different by a factor of two (0.5 & 1.0), overstating the speedup. This is why showing ratios (or percentages) greater than 1.0 (100%) and less than 1.0 (100%) on the same linear scale is visually misleading."
             },
             {
                 name: "Appropriate Level of Precision",
