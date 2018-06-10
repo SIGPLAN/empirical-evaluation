@@ -26,10 +26,10 @@ groups: [
                 notes: "This includes implied generality (implied: 'works for all Java', but actually only static subset; implied: 'works on real hardware', but actually only works in simulation; implied: 'automatic process', but in fact required non-trivial human supervision; implied: 'only improves the systems' performance', but actually the approach requires breaking some of the system's expected behavior) Also: Demonstrate on X, but unclear if relevant to target Y made in the claim"
             },
             {
-                name: "Threats to Validity of Claims",
+                name: "Acknowledging Limitations",
                 include: yes,
-                figure: "figs/threats_to_validity_of_claims.pdf",
-                desc: "A paper should state the most important threats to the validity of its claims, to place the scope of results in context. Stating no threats at all, or only tangential ones while omitting the more relevant ones, may mislead the reader to drawing too-strong conclusions.",
+                figure: "figs/acknowledging_limitations.pdf",
+                desc: "A paper should acknowledge its limitations to place the scope of results in context. Stating no limitations at all, or only tangential ones while omitting the more relevant ones, may mislead the reader to drawing too-strong conclusions.",
             },
        ]
     },
