@@ -176,6 +176,8 @@ Artifact evaluation typically occurs after reviewing a paper, to check that the 
 
 Our manifesto is: Usage should determine content. We welcome feedback from users of the checklist to indicate how frequently they use certain checklist items or how often papers reviewed adhere to them. We also welcome feedback pointing to papers that motivate the inclusion of new items. As the community increasingly adheres to the guidelines present in the checklist, the need for their inclusion may diminish. We also welcome feedback on presentation: please share points of confusion about individual items, so we can improve descriptions or organization.
 
+Feedback via:  \href{$url}{\color{black}\texttt{$url}}
+
 \end{document}
 """
 
