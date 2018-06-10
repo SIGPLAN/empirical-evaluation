@@ -40,7 +40,8 @@ ltxprolog = r"""
 \usepackage[scaled]{helvet} % see www.ctan.org/get/macros/latex/required/psnfss/psnfss2e.pdf
 \setlength{\arrayrulewidth}{.05em}
 \usepackage{titlesec}
-\titleformat*{\paragraph}{\small\color{gray}\sffamily\bfseries}
+\titleformat*{\paragraph}{\footnotesize\color{gray}\sffamily\bfseries}
+\titlespacing*{\paragraph}{0pt}{1ex}{1em}
 \usepackage{flushend}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=cyan}
@@ -97,12 +98,17 @@ ltxepilog = r"""
 \vspace*{-4ex}
 \scriptsize \href{$pdfurl}{\hspace*{-0ex}\raisebox{-.25cm}{\includegraphics[width=.75cm]{pdf.png}}}~PDF: \href{$url}{\color{black}\texttt{$url}} \hfill $date. $credits
 \twocolumn
+%\setlength{\parskip}{-1.5ex}
+%\renewcommand{\baselinestretch}{1.5}
 \begin{center}
   \textbf{\color{gray}\huge Notes}\vspace*{-2ex}
 \end{center}
 \color{gray}\footnotesize
 \paragraph{Appropriately-Scoped Claims}
 This includes \emph{implied} generality --- implied: \emph{`works for all Java'}, but actually only on a static subset; implied: \emph{`works on real hardware'}, but actually only works in simulation; implied: \emph{`automatic process'}, but in fact required non-trivial human supervision; implied: \emph{`only improves the systems' performance'}, but actually the approach requires breaking some of the system's expected behavior.
+
+\paragraph{Acknowledging Limitations}
+One concern we have heard multiple times is that this example, previously titled \emph{Threats to validity}, is not useful. The given reason is that \emph{threats to validity} sections in software engineering papers often mention threats of little significance while ignoring real threats. This is unfortunate, but does not eliminate the need to clearly scope claims, highlighting important limitations. For science to progress, we need to be honest about what we have achieved. Papers often make, or imply, overly strong claims. One way this is done is to ignore important limitations. But doing so discourages or undervalues subsequent work that overcomes those limitations because that progress is not appreciated. Progress comes in steps, rarely in leaps, and we need those steps to be solid and clearly defined.
 
 \paragraph{Appropriate Baseline for Comparison}
 An evaluation of an idea that improves upon the state-of-the-art should evaluate that idea against a baseline. This baseline could be a best-of-breed competitor, but should not be a straw man, e.g., something that once was, but is no longer, the state-of-the-art. The baseline could also be an unsophisticated approach to the same problem, e.g., a fancy testing tool is usefully compared against one that is purely random, in order to see whether it does better.
@@ -114,7 +120,9 @@ For example, the authors were unable to build the state-of-the-art baseline at t
 This includes misuse of incorrect established suite e.g. use of SPEC CINT2006 when considering parallel workloads.
 
 \paragraph{Non-Standard Suite(s) Justified}
-Note that 'benchmark' here includes what is measured and the parameters of that measurement. One example of an oft-unappreciated benchmark parameter is timeout choice.
+A concern we heard was that use of standard suites may lead to work that overfits to that benchmark. While this is a problem in theory, and is well known from the machine learning community, our experience is that PL work more often has the opposite problem. Papers we looked at often subset a benchmark, or cherry-picked particular programs. Doing so calls results into question generally, and makes it hard to compare related systems across papers. We make progress more clearly when we can measure it. Good benchmark suites are important, since only with them can we make generalizable progress. Developing them is something that our community should encourage.
+
+Note that \emph{`benchmark'} in this category includes what is measured and the parameters of that measurement. One example of an oft-unappreciated benchmark parameter is timeout choice.
 
 \paragraph{Appropriate Summary Statistics}
 There are many excellent resources available, including: \href{https://onlinelibrary.wiley.com/doi/book/10.1002/9781118360125}{\emph{Common errors in statistics (and how to avoid them).}} (Phillip I Good and James W Hardin, 2012), \href{https://www.pearson.com/us/higher-education/program/Vickers-What-is-a-p-value-anyway-34-Stories-to-Help-You-Actually-Understand-Statistics/PGM105328.html}{\emph{What is a P-value anyway?: 34 stories to help you actually understand statistics.}} (Andrew Vickers, 2010), and \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1751-5823.2009.00085_24.x}{\emph{Statistical misconceptions.}} (Schuyler W Huck, 2009).
@@ -129,10 +137,10 @@ For example, if times for a and b are 4 sec and 8 sec respectively for benchmark
 \end{center}
 \color{gray}\footnotesize
 \paragraph{Why a checklist?}
-Our goal is to help ensure that current, accepted best practices are followed. Per the \href{https://en.wikipedia.org/wiki/The_Checklist_Manifesto}{Checklist Manifesto}, checklists help to do exactly this. Our interest is the good practices for carrying out empirical evaluations as part of PL research. While some practices are clearly wrong, many require careful consideration: Not every case under every category in the checklist applies to every evaluation -- expert judgment is required. The checklist is meant to assist expert judgment, not substitute for it. \href{http://www.everup.com/2016/01/25/about-the-checklist-manifesto-atul-gawande-takeaways/}{`Failure isn't due to ignorance. According to best-selling author Atul Gawande, it's because we haven't properly applied what we already know.'} We've kept the list to a single page to make it easier to use and refer back to.
+Our goal is to help ensure that current, accepted best practices are followed. Per the \href{https://en.wikipedia.org/wiki/The_Checklist_Manifesto}{Checklist Manifesto}, checklists help to do exactly this. Our interest is the good practices for carrying out empirical evaluations as part of PL research. While some practices are clearly wrong, many require careful consideration: Not every example under every category in the checklist applies to every evaluation -- expert judgment is required. The checklist is meant to assist expert judgment, not substitute for it. \href{http://www.everup.com/2016/01/25/about-the-checklist-manifesto-atul-gawande-takeaways/}{`Failure isn't due to ignorance. According to best-selling author Atul Gawande, it's because we haven't properly applied what we already know.'} We've kept the list to a single page to make it easier to use and refer back to.
 
 \paragraph{Why now?}
-When best practices are not followed, there is a greater-than-necessary risk that the benefits reported by an empirical evaluation are illusory, which harms further progress and stunts industry adoption. The members of the committee have observed many recent cases in which practices in the present checklist are not followed. Our hope is that this effort will help focus the community on presenting the most appropriate evidence for a stated claim, where the form of this evidence is based on accepted norms.
+When best practices are not followed, there is a greater-than-nec\-essary risk that the benefits reported by an empirical evaluation are illusory, which harms further progress and stunts industry adoption. The members of the committee have observed many recent cases in which practices in the present checklist are not followed. Our hope is that this effort will help focus the community on presenting the most appropriate evidence for a stated claim, where the form of this evidence is based on accepted norms.
 
 \paragraph{Is use of the checklist going to be formally integrated into SIGPLAN conference review processes?}
 There are no plans to do so, but in time, doing so may make sense.
@@ -148,9 +156,9 @@ We also view the checklist as a way to remind reviewers of important elements of
 
 The committee examined a sampling of papers from the last several years of ASPLOS, ICFP, OOPSLA, PLDI, and POPL, and considered those that contained some form of empirical evaluation. We also considered past efforts examining empirical work (Gernot Heiser's \href{https://www.cse.unsw.edu.au/~gernot/benchmarking-crimes.html}{``Systems Benchmarking Crimes''}, the \href{https://dl.acm.org/citation.cfm?id=2983574}{``Pragmatic Guide to Assessing Empirical Evaluations''}, and the \href{http://evaluate.inf.usi.ch/}{``Evaluate Collaboratory''}). Through regular discussions over several months, we identified common patterns and anti-patterns, which we grouped into the present checklist. Note that we explicitly did not intend for the checklist to be exhaustive; rather, it reflects what appears to us to be common in PL empirical evaluations.
 
-\paragraph{Why did you organize the checklist as a series of categories, each with several cases?}
+\paragraph{Why did you organize the checklist as a series of categories, each with several examples?}
 
-The larger categories represent the general breadth of evaluations we saw, and the cases are intended to be helpful in being concrete, and common. For less common empirical evaluations, other cases may be relevant, even if not presented in the checklist explicitly. For example, for work studying human factors, the Adequate Data Analysis category might involve cases focusing on the use of statistical tests to relate outcomes in a control group to those in an experimental group. More on this kind of work below.\vspace*{2ex}
+The larger categories represent the general breadth of evaluations we saw, and the examples are intended to be helpful in being concrete, and common. For less common empirical evaluations, other examples may be relevant, even if not presented in the checklist explicitly. For example, for work studying human factors, the Adequate Data Analysis category might involve examples focusing on the use of statistical tests to relate outcomes in a control group to those in an experimental group. More on this kind of work below.\vspace*{2ex}
 
 \paragraph{Why did you use checkboxes instead of something more nuanced, like a score?}
 
@@ -158,7 +166,7 @@ The boxes next to each item are not intended to require a binary ``yes/no'' deci
 
 \paragraph{What about human factors or other areas that require empirical evaluation?}
 
-PL research sometimes involves user studies, and these are different in character than, say, work that evaluates a new compiler optimization or test generation strategy. Because user studies are currently relatively infrequent in the papers we examined, we have not included them among the category cases. It may be that new, different cases are required for such studies, or that the present checklist will evolve to contain examples drawn from user studies. Nonetheless, the seven category items are broadly applicable and should be useful to authors of any empirical evaluation for a SIGPLAN conference.
+PL research sometimes involves user studies, and these are different in character than, say, work that evaluates a new compiler optimization or test generation strategy. Because user studies are currently relatively infrequent in the papers we examined, we have not included them among the category examples. It may be that new, different examples are required for such studies, or that the present checklist will evolve to contain examples drawn from user studies. Nonetheless, the seven category items are broadly applicable and should be useful to authors of any empirical evaluation for a SIGPLAN conference.
 
 \paragraph{How does the checklist relate to the \href{http://www.artifact-eval.org/}{artifact evaluation process?}}
 
