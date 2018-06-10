@@ -1,5 +1,5 @@
 title: "SIGPLAN Empirical Evaluation Checklist"
-subtitle: "This checklist is meant to support informed judgement, not supplant it."
+subtitle: "This checklist is meant to \\textbf{support} informed judgement, not \\textbf{supplant} it."
 date: "June 2018"
 credits: "E. D. Berger, S. M. Blackburn, M. Hauswirth, and M. Hicks for the ACM SIGPLAN EC"
 version: ""
