@@ -107,7 +107,7 @@ ltxepilog = r"""
 \paragraph{Appropriately-Scoped Claims}
 This includes \emph{implied} generality --- implied: \emph{`works for all Java'}, but actually only on a static subset; implied: \emph{`works on real hardware'}, but actually only works in simulation; implied: \emph{`automatic process'}, but in fact required non-trivial human supervision; implied: \emph{`only improves the systems' performance'}, but actually the approach requires breaking some of the system's expected behavior.
 
-\paragraph{Acknowledging Limitations}
+\paragraph{Acknowledges Limitations}
 One concern we have heard multiple times is that this example, previously titled \emph{Threats to validity}, is not useful. The given reason is that \emph{threats to validity} sections in software engineering papers often mention threats of little significance while ignoring real threats. This is unfortunate, but does not eliminate the need to clearly scope claims, highlighting important limitations. For science to progress, we need to be honest about what we have achieved. Papers often make, or imply, overly strong claims. One way this is done is to ignore important limitations. But doing so discourages or undervalues subsequent work that overcomes those limitations because that progress is not appreciated. Progress comes in steps, rarely in leaps, and we need those steps to be solid and clearly defined.
 
 \paragraph{Appropriate Baseline for Comparison}
