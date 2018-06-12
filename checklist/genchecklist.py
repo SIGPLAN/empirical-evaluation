@@ -48,8 +48,8 @@ ltxprolog = r"""
 
 \newlength{\cellpad}\setlength{\cellpad}{2.1ex}
 \newlength{\rowheight}\setlength{\rowheight}{2.1cm}
-\newlength{\figwidth}\setlength{\figwidth}{1.65cm}
-\newlength{\descwidth}\setlength{\descwidth}{.30\textwidth}
+\newlength{\figwidth}\setlength{\figwidth}{1.8cm}
+\newlength{\descwidth}\setlength{\descwidth}{.31\textwidth}
 
 \newcommand{\checkbox}{{\hspace*{.3ex}\setlength{\fboxrule}{0.125pt}\raisebox{-.6ex}{\fcolorbox{black}{white}{\rule{0pt}{2ex}\hspace{2ex}}}}}
 \newlength{\vcbsize}
@@ -67,7 +67,7 @@ ltxprolog = r"""
 \scriptsize
 \begin{centering}
   \arrayrulecolor{white}
-  \begin{tabular}{c|cccc|cc}
+  \begin{tabular}{p{5ex}|p{1.5cm}cp{2ex}p{5ex}|p{1.5cm}c}
 """
 
 # latex row
