@@ -1,6 +1,6 @@
 title: "SIGPLAN Empirical Evaluation Checklist"
 subtitle: "This checklist is meant to \\textbf{support} informed judgement, not \\textbf{supplant} it."
-date: "June 2018"
+date: "October 2018"
 credits: "E. D. Berger, S. M. Blackburn, M. Hauswirth, and M. Hicks for the ACM SIGPLAN EC"
 version: ""
 url: "http://www.sigplan.org/Resources/EmpiricalEvaluation/"
@@ -13,23 +13,23 @@ groups: [
         color: "PaleGreen!30",  # Any color available via graphicx's svgnames option, integer following ! defines intensity https://en.wikipedia.org/wiki/Web_colors#X11_color_names
         items: [
             {
-                name: "Explicit Claims",
+                name: "Claims not Explicit",
                 include: yes,
                 figure: "figs/explicit_claims.pdf",
-                desc: "Claims must be explicit in order for the reader to assess whether the empirical evaluation supports them.  Claims should aim to state not just what is achieved but how."
+                desc: "Claims must be explicit in order for the reader to assess whether the empirical evaluation supports them. Missing claims cannot possibly be assessed. Claims should also aim to state not just what is achieved but how.  A common example of an implicit claim is the generality that is implied by unstated limitations."
             },
             {
-                name: "Appropriately-Scoped Claims",
+                name: "Claims not Appropriately Scoped",
                 include: yes,
                 figure: "figs/appropriately-scoped_claims.pdf",
-                desc: "The truth of claims should follow from the evidence provided. Overclaiming is often the consequence of inadequate evidence, e.g., claiming 'works for all Java', but evaluating only a static subset or claiming 'works on real hardware', but evaluating only in (unrealistic) simulation.",
-                notes: "This includes implied generality (implied: 'works for all Java', but actually only static subset; implied: 'works on real hardware', but actually only works in simulation; implied: 'automatic process', but in fact required non-trivial human supervision; implied: 'only improves the systems' performance', but actually the approach requires breaking some of the system's expected behavior) Also: Demonstrate on X, but unclear if relevant to target Y made in the claim"
+                desc: "The truth of a claim should clearly follow from the evidence provided. Claims that are not fully supported mislead readers.  'Works for all Java' is over-broad when based on a subset of Java. Other examples are 'works on real hardware' when evaluating only with (unrealistic) simulation, and 'automatic process' when requiring human intervention.",
+                notes: "The examples from the description are of over-broad or general claims, or demonstrating on X, but failing to show why doing so is relevant to target Y made in the claim."
             },
             {
-                name: "Acknowledges Limitations",
+                name: "Fails to Acknowledge Limitations",
                 include: yes,
                 figure: "figs/acknowledges_limitations.pdf",
-                desc: "A paper should acknowledge its limitations to place the scope of results in context. Stating no limitations at all, or only tangential ones while omitting the more relevant ones, may mislead the reader to drawing too-strong conclusions.",
+                desc: "A paper should acknowledge its limitations to place the scope of its results in context. Stating no limitations at all, or only tangential ones, while omitting the more relevant ones may mislead the reader into drawing overly-strong conclusions. This could hold back efforts to publish future improvements, and may lead researchers down wrong paths.",
             },
        ]
     },
@@ -39,18 +39,18 @@ groups: [
         color: "CornflowerBlue!30",
         items: [
             {
-                name: "Appropriate Baseline for Comparison",
+                name: "Fails to Compare Against Appropriate Baseline",
                 include: yes,
                 figure: "figs/appropriate_baseline_for_comparison.pdf",
-                desc: "An empirical evaluation of a contribution that improves upon the state-of-the-art should evaluate that contribution against an appropriate baseline, such as the current best-of-breed competitor or a randomized baseline.",
-                notes: "An evaluation of an idea that improves upon the state-of-the-art should evaluate that idea against a baseline. This baseline could be a best-of-breed competitor, but should not be a straw man, e.g., something that once was, but is no longer, the state-of-the-art. The baseline could also be an unsophisticated approach to the same problem, e.g., a fancy testing tool is usefully compared against one that is purely random, in order to see whether it does better."
+                desc: "Empirical evidence for a claim that a technique/system improves upon the state-of-the-art should include a comparison against an appropriate baseline. The lack of a baseline means empirical evidence lacks context. A `straw man' baseline that is misrepresented as state-of-the-art is also problematic, as it would inflate apparent benefit.",
+                notes: "An appropriate baseline could be a best-of-breed competitor, or an unsophisticated approach to the same problem, e.g., a fancy testing tool is usefully compared against one that is purely random, in order to see whether it does better. "
             },
             {
-                name: "Fair Comparison",
+                name: "Comparison is Unfair",
                 include: yes,
                 figure: "figs/fair_comparison.pdf",
-                desc: "Comparisons to a competing system should not unfairly disadvantage that system. For example, ideally, the compared systems would be compiled with the same compiler and optimization flags.",
-                notes: "For example, the authors were unable to build the state-of-the-art baseline at the -O3 optimization level and used -O0 instead, while using -O3 for their system."
+                desc: "Comparisons to a competing system should not unfairly disadvantage that system. Doing so would inflate the apparent advantage of the proposed system. For example, it would be unfair to compile the state-of-the-art baseline at -O0 optimization level, while using -O3 for the proposed system.",
+                notes: "Sometimes it may be impossible to be completely fair, e.g., if a prior system is released in binary form only and so cannot be customized as desired. Any such limitation should be clearly disclosed, and the weight to give such limited evidence should be thoughtfully considered."
             },
        ]
     },
@@ -60,25 +60,24 @@ groups: [
         color: "Gold!20",
         items: [
             {
-                name: "Appropriate Suite",
+                name: "Inappropriate Suite",
                 include: yes,
                 figure: "figs/appropriate_suite.pdf",
-                desc: "Evaluations should be conducted using the appropriate established benchmarks where they exist. Established suites should be used in the designed-for context; for example, it would be wrong to use a single-threaded suite for studying parallel performance.",
+                desc: "Evaluations should be conducted using appropriate established benchmarks where they exist so that claimed results are more likely to generalize. Not doing so may yield results that are not sufficiently general. Established suites should be used in context; it would be wrong to use a single-threaded suite for studying parallel performance.",
                 notes: "This includes misuse of incorrect established suite eg use of SPEC CINT2006 when considering parallel workloads",
             },
             {
-                name: "Non-Standard Suite(s) Justified",
+                name: "Unjustified Use of Non-Standard Suite(s)",
                 include: yes,
                 figure: "figs/non-standard_suites_justified.pdf",
-                desc: "Sometimes an established benchmark suite does not exist. A rationale should be provided for the selection of homegrown benchmarks or subsetting established benchmark suites.",
+                desc: "The use of standard benchmark suites improves the comparability of results. However, sometimes a non-standard suite, such as one that is subsetted or homegrown, is the better choice. In that case, a rationale, and possible limitations, must be provided to demonstrate why using a standard suite would have been worse.",
                 notes: "Note that 'benchmark' here includes what is measured and the parameters of that measurement. One example of an oft-unappreciated benchmark parameter is timeout choice."
             },
             {
-                name: "Applications, Not (Just) Kernels",
+                name: "Kernels instead of Full Applications",
                 include: yes,
                 figure: "figs/applications_not_just_kernels.pdf",
-                desc: "A claim that a system benefits overall applications should be tested on such applications directly, and not only on micro-kernels (which can be useful and appropriate, in a broader evaluation)",
-                notes: "(and usually the claim does imply this)."
+                desc: "Kernels can be useful and appropriate in a broader evaluation. However, a claim that a system benefits applications should be tested on such applications directly, and not only on micro-kernels, which may lack important characteristics of full applications."
             },
        ]
     },
@@ -88,24 +87,22 @@ groups: [
         color: "LightPink!50",
         items: [
             {
-                name: "Sufficient Number of Trials",
+                name: "Insufficient Number of Trials",
                 include: yes,
                 figure: "figs/sufficient_number_of_trials.pdf",
-                desc: "In modern systems, which have non-deterministic performance, a small number of trials (e.g., a single time measurement) risks treating noise as signal. Similarly, more trials may be needed to get the system into an intended state (e.g., into a steady state that avoids warm-up effects).",
-                notes: ", and to assess the statistical significance of the difference between multiple means."
+                desc: "Modern systems with non-deterministic performance properties may require many trials (e.g., of a single time measurement) to characterize their behavior adequately. Failure to do so risks treating noise as signal. Similarly, more trials may be needed to get the system into an intended state (e.g., into a steady state that avoids warm-up effects)."
             },
             {
-                name: "Appropriate Summary Statistics",
+                name: "Inappropriate Summary Statistics",
                 include: yes,
                 figure: "figs/appropriate_summary_statistics.pdf",
-                desc: "There are many summary statistics, and each presents an accurate view of a dataset only under appropriate circumstances. For example, the geometric mean should only be used when comparing values with different ranges, and the harmonic mean when comparing rates. When distributions have outliers, a median should be presented.",
-                notes: "The appropriate summary statistic (mean or median) should be used. For example, geometric mean should be used when comparing values with different ranges, and the harmonic mean when comparing rates. When distributions have outliers, a median should be presented."
+                desc: "Summary statistics can usefully characterize many results. But they should be selected carefully, because each statistic presents an accurate view only under appropriate circumstances. An inappropriate summary may amplify noise or hide an important trend."
             },
             {
-                name: "Report Data Distribution",
+                name: "No Data Distribution Reported",
                 include: yes,
                 figure: "figs/confidence_intervals.pdf",
-                desc: "Reporting just a measure of central tendency (e.g., a mean or median) fails to capture the extent of any non-determinism. A measure of variability (e.g., variance, std deviation, quantiles) and/or confidence intervals help to understand the distribution of the data.",
+                desc: "A measure of variability (e.g., variance, std. deviation, quantiles) and/or confidence intervals is needed to understand the distribution of the data. Reporting just a measure of central tendency (e.g., a mean or median) can mislead the reader, especially when the distribution is bimodal or has significant variance.",
             },
        ]
     },
@@ -115,16 +112,16 @@ groups: [
         color: "MediumPurple!30",
         items: [
             {
-                name: "Direct or Appropriate Proxy Metric",
+                name: "Indirect or Inappropriate Proxy Metric",
                 include: yes,
                 figure: "figs/direct_or_appropriate_proxy_metric.pdf",
-                desc: "If the most relevant evaluation metric is not (or cannot be) measured directly, the proxy metric used instead must be well justified. For example, a reduction in cache misses is not an appropriate proxy for actual end-to-end performance or energy consumption."
+                desc: "Proxy metrics can substitute for direct ones only when the substitution is clearly, explicitly justified.  For example, it would be misleading and incorrect to report a reduction in cache misses as a substitute for actual end-to-end performance or energy consumption."
             },
             {
-                name: "Measures All Important Effects",
+                name: "Fails to Measure All Important Effects",
                 include: yes,
                 figure: "figs/measure_all_important_effects.pdf",
-                desc: "The costs and benefits of a technique may be multi-faceted. All facets should be considered, both costs and benefits, and ideally evaluated. For example, compiler optimizations may speed up programs at the cost of drastically increasing compile times."
+                desc: "All important effects should be measured to show the true cost of a system. For example, compiler optimizations may speed up programs at the cost of drastically increasing compile times of large systems, so the compile time should be measured as well as the program speedup. Failure to do so distorts the cost/benefit of the system."
             },
        ]
     },
@@ -134,35 +131,35 @@ groups: [
         color: "SandyBrown!10",
         items: [
             {
-                name: "Sufficient Information to Repeat",
+                name: "Insufficient Information to Repeat",
                 include: yes,
                 figure: "figs/sufficient_information_to_repeat.pdf",
-                desc: "Experiments should be described in sufficient detail to be repeatable. All parameters (including default values) should be included, as well as all version numbers of software, and full details of hardware platforms."
+                desc: "Experiments evaluating an idea need to be described in sufficient detail to be repeatable. All parameters (including default values) should be included, as well as all version numbers of software, and full details of hardware platforms. Insufficient information impedes repeatability and comparison of future ideas and can hinder scientific progress."
             },
             {
-                name: "Reasonable Platform",
+                name: "Unreasonable Platform",
                 include: yes,
                 figure: "figs/reasonable_platform.pdf",
-                desc: "The evaluation should be on a platform that can reasonably be said to match the claims. For example, a claim that relates to performance on mobile platforms should not have an evaluation performed exclusively on server."
+                desc: "The evaluation should be on a platform that can reasonably be said to match the claims; otherwise, the results of the evaluation will not fully support the claims. For example, a claim that relates to performance on mobile platforms should not have an evaluation performed exclusively on servers."
             },
             {
-                name: "Explores Key Design Parameters",
+                name: "Ignores Key Design Parameters",
                 include: yes,
                 figure: "figs/explores_key_design_parameters.pdf",
                 desc: "Key parameters should be explored over a range to evaluate sensitivity to their settings. Examples include the size of the heap when evaluating garbage collection and the size of caches when evaluating a locality optimization. All expected system configurations (e.g., from warmup to steady state) should be considered."
             },
             {
-                name: "Open Loop in Workload Generator",
+                name: "Gated Workload Generator",
                 include: yes,
                 figure: "figs/open_loop_in_workload_generator.pdf",
-                desc: "Load generators for typical transaction-oriented systems should not be gated by the rate at which the system responds.  Rather, the load generator should be 'open loop', generating work independent of the performance of the system under test.   See [Scrhoeder et al, 2006]",
-                notes: "Common error in networking and search, called out in a seminal paper by Scrhoeder et al in 2006 (https://dl.acm.org/citation.cfm?id=1267698)."
+                desc: "Load generators for typical transaction-oriented systems should be 'open loop', to generate work independent of the performance of the system under test. Otherwise, results are likely to mislead because real-world transaction servers are usually open-loop.",
+                notes: "Common error in networking and search, called out in a seminal paper by Schroeder et al. in 2006 (https://dl.acm.org/citation.cfm?id=1267698)."
             },
             {
-                name: "Cross-Validation Where Needed",
+                name: "Tested on Training Set",
                 include: yes,
                 figure: "figs/cross-validation_where_needed.pdf",
-                desc: "When a system aims to be general but was developed by training on or close consideration of specific examples, it is essential that the evaluation explicitly perform cross-validation, so that the system is evaluated on data distinct from the training set.",
+                desc: "When a system aims to be general but was developed by training on or with close consideration of specific examples, it is essential that the evaluation explicitly perform cross-validation, so that the system is evaluated on data distinct from the training set.",
                 notes: "https://en.wikipedia.org/wiki/Cross-validation_(statistics)"
             },
        ]
@@ -173,29 +170,29 @@ groups: [
         color: "Orchid!30",
         items: [
             {
-                name: "Comprehensive Summary Results",
+                name: "Misleading Summary of Results",
                 include: yes,
                 figure: "figs/comprehensive_summary_results.pdf",
-                desc: "Appropriate statistics should be used to characterize the full range of results, not just the most favorable values, which may be outliers.  For example, it is not appropriate to summarize speedups of 4\\%, 6\\%, 7\\%, and 49\\% as 'up to 49\\%'."
+                desc: "The summary of the results must reflect the full range of their character to avoid misleading the reader.  For example, it is not appropriate to summarize speedups of 4\\%, 6\\%, 7\\%, and 49\\% as 'up to 49\\%'.   Instead, the full distribution of results must be reported."
             },
             {
-                name: "Axes Include Zero",
+                name: "Inappropriately Truncated Axes",
                 include: yes,
                 figure: "figs/axes_include_zero.pdf",
-                desc: "A truncated graph (with an axis not including zero) can exaggerate the importance of a difference. While `zooming' in to the interesting range of an axis can sometimes aid exposition, there is a significant risk that this is misleading (especially if it is not immediately clear that the axis is truncated)."
+                desc: "Graphs provide a visual intuition about a result. A truncated graph (with an axis not including zero) will exaggerate the importance of a difference. `Zooming' in to the interesting range of an axis can sometimes aid exposition, but should be pointed out explicitly to avoid being misleading."
             },
             {
-                name: "Ratios Plotted Correctly",
+                name: "Ratios Plotted Incorrectly",
                 include: yes,
                 figure: "figs/ratios_plotted_correctly.pdf",
-                desc: "When ratios (e.g. speedups) are plotted on one graph, the size of the bars must be linearly/logarithmically proportional to the change.  For example, 2.0 and 0.5 are reciprocals, but their linear distance from 1.0 does not reflect that. This misleading effect can be avoided either by using a log scale or by normalizing to the lowest (highest) value.",
+                desc: "Incorrectly plotted ratios badly mislead visual intuition.  For example, 2.0 and 0.5 are reciprocals, but their linear distance from 1.0 does not reflect that, so plotting those numbers on a linear scale significantly distorts the result. This misleading effect can be avoided either by using a log scale or by normalizing to the lowest (highest) value.",
                 notes: "For example, if times for a and b are 4 sec and 8 sec respectively for benchmark x and 6 sec and 3 sec for benchmark y, this could be shown as a/b (0.5, 2.0) or b/a (2.0, 0.5), where 1.0 represents parity. Although the results (0.5 & 2.0) are reciprocals, their distance from 1.0 on a linear scale is different by a factor of two (0.5 & 1.0), overstating the speedup. This is why showing ratios (or percentages) greater than 1.0 (100%) and less than 1.0 (100%) on the same linear scale is visually misleading."
             },
             {
-                name: "Appropriate Level of Precision",
+                name: "Inappropriate Level of Precision",
                 include: yes,
                 figure: "figs/appropriate_level_of_precision.pdf",
-                desc: "The number of significant digits should reflect the precision of the experiment.   Reporting improvements of '49.9\\%' when the experimental error is +/- 1\\% is an example of mis-stated precision, misleading the reviewer's understanding of the significance of the rest."
+                desc: "Measurements reported at a proper level of precision reveal relevant information. Under-precise reports may hide such information, and over-precise ones may overstate the accuracy of a measurement and obscure what is relevant.  For example, reporting '49.9\\%' when the experimental error is +/- 1\\% overstates the level of precision of the result."
             },
        ]
     },
