@@ -53,7 +53,7 @@ ltxprolog = r"""
 
 \newcommand{\checkbox}{{\hspace*{.3ex}\setlength{\fboxrule}{0.125pt}\raisebox{-.6ex}{\fcolorbox{black}{white}{\rule{0pt}{2ex}\hspace{2ex}}}}}
 \newlength{\vcbsize}
-\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-1ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2\hspace*{1ex}\checkbox \\{\raisebox{-0ex}{\footnotesize \emph{Example Best Practices}}}}}}}}}
+\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-1ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2\hspace*{1ex}\checkbox \\{\raisebox{-0ex}{\footnotesize \emph{Example Violations}}}}}}}}}
 
 \begin{document}
 \pagenumbering{gobble}
