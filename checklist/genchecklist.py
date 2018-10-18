@@ -104,30 +104,30 @@ ltxepilog = r"""
   \textbf{\color{gray}\huge Notes}\vspace*{-2ex}
 \end{center}
 \color{gray}\footnotesize
-\paragraph{Appropriately-Scoped Claims}
+\paragraph{Claims not Explicit}
 This includes \emph{implied} generality --- implied: \emph{`works for all Java'}, but actually only on a static subset; implied: \emph{`works on real hardware'}, but actually only works in simulation; implied: \emph{`automatic process'}, but in fact required non-trivial human supervision; implied: \emph{`only improves the systems' performance'}, but actually the approach requires breaking some of the system's expected behavior.
 
-\paragraph{Acknowledges Limitations}
+\paragraph{Fails to Acknowledge Limitations}
 One concern we have heard multiple times is that this example, previously titled \emph{Threats to validity}, is not useful. The given reason is that \emph{threats to validity} sections in software engineering papers often mention threats of little significance while ignoring real threats. This is unfortunate, but does not eliminate the need to clearly scope claims, highlighting important limitations. For science to progress, we need to be honest about what we have achieved. Papers often make, or imply, overly strong claims. One way this is done is to ignore important limitations. But doing so discourages or undervalues subsequent work that overcomes those limitations because that progress is not appreciated. Progress comes in steps, rarely in leaps, and we need those steps to be solid and clearly defined.
 
-\paragraph{Appropriate Baseline for Comparison}
+\paragraph{Fails to Compare Against Appropriate Baseline}
 An evaluation of an idea that improves upon the state-of-the-art should evaluate that idea against a baseline. This baseline could be a best-of-breed competitor, but should not be a straw man, e.g., something that once was, but is no longer, the state-of-the-art. The baseline could also be an unsophisticated approach to the same problem, e.g., a fancy testing tool is usefully compared against one that is purely random, in order to see whether it does better.
 
-\paragraph{Fair Comparison}
+\paragraph{Comparison is Unfair}
 For example, the authors were unable to build the state-of-the-art baseline at the -O3 optimization level and used -O0 instead, while using -O3 for their system.
 
-\paragraph{Appropriate Suite}
+\paragraph{Inappropriate Suite}
 This includes misuse of incorrect established suite e.g. use of SPEC CINT2006 when considering parallel workloads.
 
-\paragraph{Non-Standard Suite(s) Justified}
+\paragraph{Unjustified Use of Non-Standard Suite(s)}
 A concern we heard was that use of standard suites may lead to work that overfits to that benchmark. While this is a problem in theory, and is well known from the machine learning community, our experience is that PL work more often has the opposite problem. Papers we looked at often subset a benchmark, or cherry-picked particular programs. Doing so calls results into question generally, and makes it hard to compare related systems across papers. We make progress more clearly when we can measure it. Good benchmark suites are important, since only with them can we make generalizable progress. Developing them is something that our community should encourage.
 
 Note that \emph{`benchmark'} in this category includes what is measured and the parameters of that measurement. One example of an oft-unappreciated benchmark parameter is timeout choice.
 
-\paragraph{Appropriate Summary Statistics}
+\paragraph{Inappropriate Summary Statistics}
 There are many excellent resources available, including: \href{https://onlinelibrary.wiley.com/doi/book/10.1002/9781118360125}{\emph{Common errors in statistics (and how to avoid them).}} (Phillip I Good and James W Hardin, 2012), \href{https://www.pearson.com/us/higher-education/program/Vickers-What-is-a-p-value-anyway-34-Stories-to-Help-You-Actually-Understand-Statistics/PGM105328.html}{\emph{What is a P-value anyway?: 34 stories to help you actually understand statistics.}} (Andrew Vickers, 2010), and \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1751-5823.2009.00085_24.x}{\emph{Statistical misconceptions.}} (Schuyler W Huck, 2009).
 
-\paragraph{Ratios Plotted Correctly}
+\paragraph{Ratios Plotted Incorrectly}
 For example, if times for a and b are 4 sec and 8 sec respectively for benchmark x and 6 sec and 3 sec for benchmark y, this could be shown as a/b (0.5, 2.0) or b/a (2.0, 0.5), where 1.0 represents parity. Although the results (0.5 \& 2.0) are reciprocals, their distance from 1.0 on a linear scale is different by a factor of two (0.5 \& 1.0), overstating the speedup. This is why showing ratios (or percentages) greater than 1.0 (100\%) and less than 1.0 (100\%) on the same linear scale is visually misleading.
 \vspace{4ex}
 
