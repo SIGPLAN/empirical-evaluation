@@ -111,10 +111,7 @@ This includes \emph{implied} generality --- implied: \emph{`works for all Java'}
 One concern we have heard multiple times is that this example, previously titled \emph{Threats to validity}, is not useful. The given reason is that \emph{threats to validity} sections in software engineering papers often mention threats of little significance while ignoring real threats. This is unfortunate, but does not eliminate the need to clearly scope claims, highlighting important limitations. For science to progress, we need to be honest about what we have achieved. Papers often make, or imply, overly strong claims. One way this is done is to ignore important limitations. But doing so discourages or undervalues subsequent work that overcomes those limitations because that progress is not appreciated. Progress comes in steps, rarely in leaps, and we need those steps to be solid and clearly defined.
 
 \paragraph{Fails to Compare Against Appropriate Baseline}
-An evaluation of an idea that improves upon the state-of-the-art should evaluate that idea against a baseline. This baseline could be a best-of-breed competitor, but should not be a straw man, e.g., something that once was, but is no longer, the state-of-the-art. The baseline could also be an unsophisticated approach to the same problem, e.g., a fancy testing tool is usefully compared against one that is purely random, in order to see whether it does better.
-
-\paragraph{Comparison is Unfair}
-For example, the authors were unable to build the state-of-the-art baseline at the -O3 optimization level and used -O0 instead, while using -O3 for their system.
+The baseline could also be an unsophisticated approach to the same problem, e.g., a fancy testing tool is usefully compared against one that is purely random, in order to see whether it does better.
 
 \paragraph{Inappropriate Suite}
 This includes misuse of incorrect established suite e.g. use of SPEC CINT2006 when considering parallel workloads.
