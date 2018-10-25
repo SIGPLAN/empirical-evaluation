@@ -45,15 +45,17 @@ ltxprolog = r"""
 \usepackage{flushend}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=cyan}
+\usepackage{bbding} % checkmark \CheckmarkBold cross \XSolidBrush
+\usepackage{rotating}
 
 \newlength{\cellpad}\setlength{\cellpad}{2.1ex}
 \newlength{\rowheight}\setlength{\rowheight}{2.1cm}
 \newlength{\figwidth}\setlength{\figwidth}{1.8cm}
 \newlength{\descwidth}\setlength{\descwidth}{.31\textwidth}
 
-\newcommand{\checkbox}{{\hspace*{.3ex}\setlength{\fboxrule}{0.125pt}\raisebox{-.6ex}{\fcolorbox{black}{white}{\rule{0pt}{2ex}\hspace{2ex}}}}}
+\newcommand{\checkbox}{\hspace{.5ex}\begin{turn}{-90}{\hspace*{-1.15em}\setlength{\fboxrule}{0.125pt}\raisebox{-2ex}{{\tiny\CheckmarkBold}\,\fcolorbox{black}{white}{\rule{0pt}{1.8ex}\hspace{1.8ex}}\,{\tiny\XSolidBrush}}}\end{turn}}
 \newlength{\vcbsize}
-\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-1ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2\hspace*{1ex}\checkbox \\{\raisebox{-0ex}{\footnotesize \emph{Example Violations}}}}}}}}}
+\newcommand{\verticalwithcheckbox}[2]{\setlength{\vcbsize}{\dimexpr(\rowheight*#1)\relax}\multirow{-#1}{*}{\hspace*{-.5ex}\smash{\rotatebox[origin=l]{90}{\hspace*{-.5ex}\mbox{\parbox{\vcbsize}{\centering \normalsize #2\hspace*{1ex}\checkbox \\\vspace*{-2ex}{\footnotesize \emph{Example Violations}}}}}}}}
 
 \begin{document}
 \pagenumbering{gobble}
